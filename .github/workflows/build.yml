@@ -458,7 +458,7 @@ jobs:
         run: |
           cmake --install ${{ env.BUILD_DIR }} --prefix ${{ env.INSTALL_APPIMAGE_DIR }}/usr
 
-          export OUTPUT="PrismLauncher-${{ runner.os }}-${{ env.VERSION }}-${{ inputs.build_type }}-x86_64.AppImage"
+          export OUTPUT="PrismLauncher-Linux-x86_64.AppImage"
 
           chmod +x linuxdeploy-*.AppImage
 
@@ -492,9 +492,11 @@ jobs:
           cp -r squashfs-root/usr/optional/* ${{ env.INSTALL_APPIMAGE_DIR }}/usr/optional
           cp -r squashfs-root/usr/optional/* ${{ env.INSTALL_APPIMAGE_DIR }}/usr/plugins
 
-          export UPDATE_INFORMATION="gh-releases-zsync|${{ github.repository_owner }}|${{ github.event.repository.name }}|latest|PrismLauncher-${{ runner.os }}-*-x86_64.AppImage.zsync" 
+          export UPDATE_INFORMATION="gh-releases-zsync|${{ github.repository_owner }}|${{ github.event.repository.name }}|latest|PrismLauncher-Linux-x86_64.AppImage.zsync" 
 
           ./linuxdeploy-x86_64.AppImage --appdir ${{ env.INSTALL_APPIMAGE_DIR }} --output appimage --plugin qt -i ${{ env.INSTALL_APPIMAGE_DIR }}/usr/share/icons/hicolor/scalable/apps/org.prismlauncher.PrismLauncher.svg
+          
+          mv "PrismLauncher-Linux-x86_64.AppImage" "PrismLauncher-Linux-${{ env.VERSION }}-${{ inputs.build_type }}-x86_64.AppImage"
 
       ##
       # UPLOAD BUILDS
