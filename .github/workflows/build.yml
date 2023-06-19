@@ -569,8 +569,8 @@ jobs:
         if: runner.os == 'Linux' && matrix.qt_ver != 5
         uses: actions/upload-artifact@v3
         with:
-          name: PrismLauncher-${{ runner.os }}-${{ env.VERSION }}-${{ inputs.build_type }}-x86_64.AppImage.zsync
-          path: PrismLauncher-${{ runner.os }}-${{ env.VERSION }}-${{ inputs.build_type }}-x86_64.AppImage.zsync
+          name: PrismLauncher-Linux-${{ env.VERSION }}-${{ inputs.build_type }}-x86_64.AppImage.zsync
+          path: PrismLauncher-Linux-x86_64.AppImage.zsync
 
       - name: ccache stats (Windows MinGW-w64)
         if: runner.os == 'Windows' && matrix.msystem != ''
